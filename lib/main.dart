@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return Sizer(builder: (context, orientation, deviceType) {
       return MaterialApp(
         theme: ThemeData(primarySwatch: Colors.blue),
-        home: Home(),
+        home: BottomView(),
       );
     });
   }
