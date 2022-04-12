@@ -57,11 +57,44 @@ class _HomeState extends State<Home> {
                                               child: Stack(children: [
                                                 ClipRRect(
                                                   child: Image.network(
-                                                      Functions.fixImage(snapshot.data![index].photo),
+                                                      Functions.fixImage(
+                                                          snapshot.data![index]
+                                                              .photo),
                                                       fit: BoxFit.fill,
                                                       width: 100.0.w),
                                                   borderRadius:
                                                       BorderRadius.circular(15),
+                                                ),
+                                                Align(
+                                                  alignment:
+                                                      Alignment.bottomCenter,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(15),
+                                                      bottomRight:
+                                                          Radius.circular(15),
+                                                    ),
+                                                    gradient: LinearGradient(end: Alignment(0.0,-1), begin: Alignment(0,0.2),
+                                                    colors: [
+                                                      Colors.black54,
+                                                      Colors.black.withOpacity(0.1),
+                                                    ]
+                                                    )
+
+                                                    ),
+                                                    child: Padding(
+                                                      padding: EdgeInsets.all(8),
+                                                      child: Text(snapshot.data![index].title,
+                                                      style: TextStyle(
+                                                        fontWeight: FontWeight.w500,
+                                                        fontSize: 17,
+                                                        color: Colors.white
+                                                      ),),
+                                                    ),
+                                                  ),
                                                 )
                                               ]),
                                             ),
