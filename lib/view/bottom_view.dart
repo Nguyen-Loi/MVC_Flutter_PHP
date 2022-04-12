@@ -24,6 +24,7 @@ class _BottomViewState extends State<BottomView> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+         body: body[currentIndex],
         bottomNavigationBar: BottomNavigationBar(
           onTap: onTapBottomView,
           currentIndex: currentIndex,
@@ -34,6 +35,7 @@ class _BottomViewState extends State<BottomView> {
             BottomNavigationBarItem(icon: Icon(Icons.bookmark_border), label: 'Favorite'),
             BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined), label: 'Profile'),
           ],
+          
         ),
       ),
     );

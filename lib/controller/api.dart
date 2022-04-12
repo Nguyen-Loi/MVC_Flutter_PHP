@@ -3,7 +3,7 @@ class ApiConstant {
   String slider = 'slider';
   String latest = 'latest';
   String category = 'category';
-  String baseUrl = 'http://localhost/ebookapp/';
+  String baseUrl = 'http://127.0.0.1/ebookapp/';
  
 
 }
