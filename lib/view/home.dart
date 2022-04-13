@@ -146,8 +146,24 @@ class _HomeState extends State<Home> {
                                     child: ListView.builder(
                                       shrinkWrap: true,
                                       scrollDirection: Axis.horizontal,
-                                      itemCount: snapshot.data!.length,
+                                      itemCount: snapshot.data!.length + 1,
                                       itemBuilder: (context, index) {
+                                        if (index == snapshot.data!.length) {
+                                          return GestureDetector(
+                                            onTap: () {},
+                                            child: Container(
+                                                width: 24.w,
+                                                padding:
+                                                    EdgeInsets.only(top: 15.w),
+                                                child: Text(
+                                                  'See All',
+                                                  style: TextStyle(
+                                                      color: Colors.blue,
+                                                      fontSize: 16),
+                                                  textAlign: TextAlign.center,
+                                                )),
+                                          );
+                                        }
                                         return GestureDetector(
                                           onTap: () {},
                                           child: Container(
@@ -174,7 +190,8 @@ class _HomeState extends State<Home> {
                                                       color: Colors.black,
                                                     ),
                                                     maxLines: 2,
-                                                    overflow: TextOverflow.ellipsis,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
                                                   ),
                                                 )
                                               ],

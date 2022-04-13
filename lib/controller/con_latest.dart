@@ -4,7 +4,7 @@ import 'package:ebook_app/model/model_ebook.dart';
 
 Future<List<ModelEbook>> fetchLatest(List<ModelEbook> fetchLatest) async {
   var request = await Dio()
-      .get(ApiConstant().baseUrl + ApiConstant().api + ApiConstant().latest);
+      .get(ApiConstant().baseUrl() + ApiConstant().api + ApiConstant().latest);
 
   for (Map<String, dynamic> ebook in request.data) {
     fetchLatest.add(ModelEbook(

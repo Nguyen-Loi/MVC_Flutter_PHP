@@ -4,7 +4,7 @@ import 'package:ebook_app/model/model_ebook.dart';
 
 Future<List<ModelEbook>> fetchSlider(List<ModelEbook> fetchSlider) async {
   var request = await Dio()
-      .get(ApiConstant().baseUrl + ApiConstant().api + ApiConstant().slider);
+      .get(ApiConstant().baseUrl() + ApiConstant().api + ApiConstant().slider);
 
   for (Map<String, dynamic> ebook in request.data) {
     fetchSlider.add(ModelEbook(
