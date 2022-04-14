@@ -2,12 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:ebook_app/controller/api.dart';
 import 'package:ebook_app/model/ebook/model_ebook.dart';
 
-Future<List<ModelEbook>> fetchSlider(List<ModelEbook> fetchSlider) async {
+Future<List<ModelEbook>> fetchComing(List<ModelEbook> fetchComing) async {
   var request = await Dio()
-      .get(ApiConstant().baseUrl() + ApiConstant().api + ApiConstant().slider);
+      .get(ApiConstant().baseUrl() + ApiConstant().api + ApiConstant().coming);
 
   for (Map<String, dynamic> ebook in request.data) {
-    fetchSlider.add(ModelEbook(
+    fetchComing.add(ModelEbook(
         id: ebook['id'],
         title: ebook['title'],
         photo: ebook['photo'],
@@ -23,5 +23,5 @@ Future<List<ModelEbook>> fetchSlider(List<ModelEbook> fetchSlider) async {
         rating: ebook['rating'],
         free: ebook['free']));
   }
-  return fetchSlider;
+  return fetchComing;
 }

@@ -5,6 +5,7 @@ class ApiConstant {
   String slider = 'slider';
   String latest = 'latest';
   String category = 'category';
+  String coming = 'coming';
 
   String baseUrl() {
     String baseUrlWeb = 'http://127.0.0.1/ebookapp/';
