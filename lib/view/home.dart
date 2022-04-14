@@ -41,7 +41,30 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [],
+        backgroundColor: Colors.white70,
+        elevation: 0,
+        title: Row(
+          children: [
+            Container(
+              child: const Icon(
+                Icons.account_circle_outlined,
+                color: Colors.black,
+              ),
+            ),
+            SizedBox(
+              width: 2.w,
+            ),
+            const Text(
+              'Hello',
+              style: TextStyle(color: Colors.black),
+            ),
+            
+          ],
+          
+        ),
+      ),
       body: Container(
         child: SingleChildScrollView(
           child: FutureBuilder(
@@ -69,18 +92,18 @@ class _HomeState extends State<Home> {
                                         return GestureDetector(
                                           onTap: () {},
                                           child: Padding(
-                                            padding: EdgeInsets.all(10),
+                                            padding: const EdgeInsets.all(10),
                                             child: Container(
                                               child: Stack(children: [
                                                 ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(15),
                                                   child: Image.network(
                                                       Functions.fixImage(
                                                           snapshot.data![index]
                                                               .photo),
                                                       fit: BoxFit.fill,
                                                       width: 100.0.w),
-                                                  borderRadius:
-                                                      BorderRadius.circular(15),
                                                 ),
                                                 Align(
                                                   alignment:
@@ -88,7 +111,8 @@ class _HomeState extends State<Home> {
                                                   child: Container(
                                                     decoration: BoxDecoration(
                                                         borderRadius:
-                                                            BorderRadius.only(
+                                                            const BorderRadius
+                                                                .only(
                                                           bottomLeft:
                                                               Radius.circular(
                                                                   15),
@@ -96,14 +120,14 @@ class _HomeState extends State<Home> {
                                                               Radius.circular(
                                                                   15),
                                                         ),
-                                                        gradient:
-                                                            LinearGradient(
-                                                                end: Alignment(
+                                                        gradient: LinearGradient(
+                                                            end:
+                                                                const Alignment(
                                                                     0.0, -1),
-                                                                begin:
-                                                                    Alignment(
-                                                                        0, 0.2),
-                                                                colors: [
+                                                            begin:
+                                                                const Alignment(
+                                                                    0, 0.2),
+                                                            colors: [
                                                               Colors.black54,
                                                               Colors.black
                                                                   .withOpacity(
@@ -111,11 +135,12 @@ class _HomeState extends State<Home> {
                                                             ])),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsets.all(8),
+                                                          const EdgeInsets.all(
+                                                              8),
                                                       child: Text(
                                                         snapshot
                                                             .data![index].title,
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                             fontSize: 17,
@@ -144,7 +169,7 @@ class _HomeState extends State<Home> {
                                 ConnectionState.done) {
                               return Column(
                                 children: [
-                                  Padding(
+                                  const Padding(
                                     padding: EdgeInsets.all(10),
                                     child: Text(
                                       'Latest book',
@@ -166,7 +191,7 @@ class _HomeState extends State<Home> {
                                                 width: 24.w,
                                                 padding:
                                                     EdgeInsets.only(top: 15.w),
-                                                child: Text(
+                                                child: const Text(
                                                   'See All',
                                                   style: TextStyle(
                                                       color: Colors.blue,
@@ -178,7 +203,7 @@ class _HomeState extends State<Home> {
                                         return GestureDetector(
                                           onTap: () {},
                                           child: Container(
-                                            padding: EdgeInsets.all(6),
+                                            padding: const EdgeInsets.all(6),
                                             child: Column(
                                               children: [
                                                 ClipRRect(
@@ -193,11 +218,11 @@ class _HomeState extends State<Home> {
                                                   ),
                                                 ),
                                                 SizedBox(height: 0.5.h),
-                                                Container(
+                                                SizedBox(
                                                   width: 24.w,
                                                   child: Text(
                                                     snapshot.data![index].title,
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       color: Colors.black,
                                                     ),
                                                     maxLines: 2,
@@ -215,21 +240,21 @@ class _HomeState extends State<Home> {
                                 ],
                               );
                             }
-                            return Center(
+                            return const Center(
                               child: CircularProgressIndicator(),
                             );
                           },
                         ),
                       ),
                       //* Cooming soon
-                      Container(
+                      SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: FutureBuilder<List<ModelEbook>>(
                             future: getComing,
                             builder: (context, snapshot) {
                               if (snapshot.connectionState ==
                                   ConnectionState.done) {
-                                return snapshot.data!.length == 0
+                                return snapshot.data!.isEmpty
                                     ? Container()
                                     : Container(
                                         color: Colors.blueGrey.withOpacity(0.5),
@@ -238,11 +263,12 @@ class _HomeState extends State<Home> {
                                           children: [
                                             Center(
                                               child: Container(
-                                                padding: EdgeInsets.all(8),
+                                                padding:
+                                                    const EdgeInsets.all(8),
                                                 child: Container(
                                                   margin:
                                                       EdgeInsets.only(top: 5.h),
-                                                  child: Text(
+                                                  child: const Text(
                                                     'Coming soon',
                                                     style: TextStyle(
                                                         color: Colors.black,
@@ -269,7 +295,8 @@ class _HomeState extends State<Home> {
                                                         onTap: () {},
                                                         child: Container(
                                                           padding:
-                                                              EdgeInsets.all(8),
+                                                              const EdgeInsets
+                                                                  .all(8),
                                                           child: Column(
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment
@@ -296,7 +323,7 @@ class _HomeState extends State<Home> {
                                                               SizedBox(
                                                                   height:
                                                                       0.5.h),
-                                                              Container(
+                                                              SizedBox(
                                                                 width: 24.w,
                                                                 child: Text(
                                                                   snapshot
@@ -304,7 +331,7 @@ class _HomeState extends State<Home> {
                                                                           index]
                                                                       .title,
                                                                   style:
-                                                                      TextStyle(
+                                                                      const TextStyle(
                                                                     color: Colors
                                                                         .black,
                                                                   ),
@@ -328,58 +355,97 @@ class _HomeState extends State<Home> {
                       ),
                       //*Category
                       Container(
-                        child: FutureBuilder<List<ModelCategory>>(future: getCategory,builder: (context, snapshot){
-                          if(snapshot.connectionState==ConnectionState.done){
-                            return Column(
-                              children: [
-                                Padding(padding: EdgeInsets.all(8), child: Text('Category', style: TextStyle(
-                                  fontWeight: FontWeight.bold, color: Colors.black
-                                ),),),
-                                SizedBox(
-                                  height: 14.h,
-                                  child: ListView.builder(shrinkWrap: true,itemCount: snapshot.data!.length,scrollDirection: Axis.horizontal, itemBuilder: (context, index){
-                                    return GestureDetector(
-                                             onTap: (){},
-                                             child: Container(
-                                               padding: EdgeInsets.all(5.0),
-                                               child: Stack(
-                                                 children: [
-                                                   ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10),
-                                                                child: Image
-                                                                    .network(
-                                                                  Functions.fixImage(
-                                                                      snapshot
-                                                                          .data![
-                                                                              index]
-                                                                          .photoCat),
-                                                                  fit: BoxFit
-                                                                      .cover,
-                                                                  height: 15.h,
-                                                                  width: 24.w,
-                                                                ),
-                                                              )
-                                                 ],
-                                               ),
-                                             ),
-                                    );
-                                  }),
-                                )
-                                
-                              ],
-                            );
-                          }
-                          return Container();
-                        },
+                        child: FutureBuilder<List<ModelCategory>>(
+                          future: getCategory,
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.done) {
+                              return Column(
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.all(8),
+                                    child: Text(
+                                      'Category',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 14.h,
+                                    child: ListView.builder(
+                                        shrinkWrap: true,
+                                        itemCount: snapshot.data!.length,
+                                        scrollDirection: Axis.horizontal,
+                                        itemBuilder: (context, index) {
+                                          return GestureDetector(
+                                            onTap: () {},
+                                            child: Container(
+                                              padding:
+                                                  const EdgeInsets.all(5.0),
+                                              child: Stack(
+                                                children: [
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    child: Image.network(
+                                                      Functions.fixImage(
+                                                          snapshot.data![index]
+                                                              .photoCat),
+                                                      fit: BoxFit.cover,
+                                                      height: 15.h,
+                                                      width: 24.w,
+                                                    ),
+                                                  ),
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10),
+                                                    child: Container(
+                                                      color: Colors.black
+                                                          .withOpacity(0.6),
+                                                      height: 15.h,
+                                                      width: 24.w,
+                                                    ),
+                                                  ),
+                                                  Positioned(
+                                                    bottom: 0,
+                                                    left: 0,
+                                                    right: 0,
+                                                    top: 0,
+                                                    child: Center(
+                                                      child: Text(
+                                                        snapshot
+                                                            .data![index].name,
+                                                        style: const TextStyle(
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                        maxLines: 1,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        }),
+                                  )
+                                ],
+                              );
+                            }
+                            return Container();
+                          },
                         ),
                       ),
                     ],
                   );
                 }
-                return Center(
+                return const Center(
                   child: Text('Loading'),
                 );
               }),
