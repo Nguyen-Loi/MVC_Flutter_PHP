@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class BotttomFavorite extends StatefulWidget {
-  BotttomFavorite({Key? key}) : super(key: key);
 
   @override
   State<BotttomFavorite> createState() => _BotttomFavoriteState();

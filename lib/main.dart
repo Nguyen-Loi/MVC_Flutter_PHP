@@ -1,5 +1,6 @@
-import 'package:ebook_app/view/bottom_view.dart';
-import 'package:ebook_app/view/home.dart';
+import 'package:ebook_app/view/bottom_view/bottom_view.dart';
+import 'package:ebook_app/view/bottom_view/bottom_home.dart';
+import 'package:ebook_app/view/register/ebook_register.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return Sizer(builder: (context, orientation, deviceType) {
       return MaterialApp(
         theme: ThemeData(primarySwatch: Colors.blue),
-        home: BottomView(),
+        home: EbookRegister(),
       );
     });
   }

@@ -1,7 +1,7 @@
-import 'package:ebook_app/view/bottom_favorite.dart';
-import 'package:ebook_app/view/bottom_library.dart';
-import 'package:ebook_app/view/bottom_profile.dart';
-import 'package:ebook_app/view/home.dart';
+import 'package:ebook_app/view/bottom_view/bottom_favorite.dart';
+import 'package:ebook_app/view/bottom_view/bottom_library.dart';
+import 'package:ebook_app/view/bottom_view/bottom_profile.dart';
+import 'package:ebook_app/view/bottom_view/bottom_home.dart';
 import 'package:flutter/material.dart';
 
 class BottomView extends StatefulWidget {
