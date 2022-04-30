@@ -188,6 +188,37 @@ class EbookRegisterState extends State<EbookRegister> {
               TextFiledMain(
                   hintText: 'Enter your password',
                   iconFiled: Icons.lock_outline),
+                  GestureDetector(
+                    onTap: (){},
+                    child: Container(
+                        margin: EdgeInsets.only(right: 20, left: 20, top: 17, bottom: 5),
+                        padding: EdgeInsets.symmetric(vertical: 1.2.h, horizontal: 1.5.h),
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          
+                        ),
+                        width: MediaQuery.of(context).size.width,
+                        child: !visibleLoading?Container(
+                           width: MediaQuery.of(context).size.width,
+                           child: Text('Create account', style: TextStyle(
+                             color: Colors.white
+                           ),textAlign: TextAlign.center,),
+
+                        ):Visibility(visible: visibleLoading, child: Container(
+                           width: MediaQuery.of(context).size.width,
+                           child: Center(
+                             child: Container(
+                               width: 20,
+                               height: 20,
+                               child: CircularProgressIndicator(
+                                 strokeWidth: 1.5, color: Colors.white,
+                               ),
+                             ),
+                           )
+                        ), ),
+                    ),
+                  )
             ],
           ),
         ),
