@@ -1,8 +1,10 @@
 import 'dart:io';
+import 'package:ebook_app/controller/api.dart';
 import 'package:ebook_app/view/textfield_main.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
 
 class EbookRegister extends StatefulWidget {
   EbookRegister({Key? key}) : super(key: key);
@@ -14,6 +16,60 @@ class EbookRegister extends StatefulWidget {
 class EbookRegisterState extends State<EbookRegister> {
   File _file = File('');
   final imgPicker = ImagePicker();
+  bool visibleLoading = false;
+
+  Future register(
+      {required TextEditingController name,
+      required TextEditingController email,
+      required TextEditingController password,
+      required BuildContext context,
+      required Widget widget}) async {
+    setState(() {
+      visibleLoading = true;
+    });
+
+    String getName = name.text;
+    String getEmail = email.text;
+    String getPassword = password.text;
+
+    var req = http.MultipartRequest(
+        'POST', Uri.parse(ApiConstant().baseUrl() + ApiConstant().register));
+    var photo = await http.MultipartFile.fromPath('photo', _file.path);
+    req.fields['name'] = getName;
+    req.fields['email'] = getEmail;
+    req.fields['password'] = getPassword;
+    req.files.add(photo);
+
+    var reponse = await req.send();
+
+    if (reponse.statusCode == 200) {
+      setState(() {
+        visibleLoading = false;
+      });
+      //Add back login page
+    } else {
+      setState(() {
+        visibleLoading = false;
+      });
+
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text(
+                'Name or email already on database',
+                style: TextStyle(color: Colors.blue),
+              ),
+              actions: [
+                GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: Text('Okey'),
+                )
+              ],
+            );
+          });
+    }
+  }
 
   void imagePicker(BuildContext context) {
     showModalBottomSheet(
@@ -47,7 +103,7 @@ class EbookRegisterState extends State<EbookRegister> {
                 ),
                 onTap: () {
                   imageFromCamera();
-                     Navigator.pop(context);
+                  Navigator.pop(context);
                 },
               ),
             ],

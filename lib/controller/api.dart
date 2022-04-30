@@ -6,6 +6,7 @@ class ApiConstant {
   String latest = 'latest';
   String category = 'category';
   String coming = 'coming';
+  String register = 'utils/register.php';
 
   String baseUrl() {
     String baseUrlWeb = 'http://127.0.0.1/ebookapp/';
