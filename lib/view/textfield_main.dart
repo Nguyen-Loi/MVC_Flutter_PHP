@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class TextFiledMain extends StatelessWidget {
   final String hintText;
   final IconData iconFiled;
+  final TextEditingController textController;
   const TextFiledMain({
     Key? key,
     required this.hintText,
     required this.iconFiled,
+    required this.textController,
   }) : super(key: key);
-
   
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 20, left: 20, top: 17, bottom: 5),
+      margin: EdgeInsets.only(right: 20, left: 20, top: 3.h, bottom: 5),
       child: TextField(
         style: TextStyle(color: Colors.black),
+        controller: textController,
         decoration: InputDecoration(
-          hintText:  hintText,
+          hintText: hintText,
           prefixIcon: Icon(
             iconFiled,
             color: Colors.black,

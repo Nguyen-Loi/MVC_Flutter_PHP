@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:ebook_app/controller/api.dart';
+import 'package:ebook_app/view/login/ebook_login.dart';
 import 'package:ebook_app/view/textfield_main.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,9 @@ class EbookRegisterState extends State<EbookRegister> {
   File _file = File('');
   final imgPicker = ImagePicker();
   bool visibleLoading = false;
+  TextEditingController name = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
 
   Future register(
       {required TextEditingController name,
@@ -39,7 +43,6 @@ class EbookRegisterState extends State<EbookRegister> {
     req.fields['email'] = getEmail;
     req.fields['password'] = getPassword;
     req.files.add(photo);
-
     var reponse = await req.send();
 
     if (reponse.statusCode == 200) {
@@ -47,6 +50,8 @@ class EbookRegisterState extends State<EbookRegister> {
         visibleLoading = false;
       });
       //Add back login page
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => EbookLogin()));
     } else {
       setState(() {
         visibleLoading = false;
@@ -145,13 +150,16 @@ class EbookRegisterState extends State<EbookRegister> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.only(top: 17.h),
+        margin: EdgeInsets.only(top: 10.h),
         child: SingleChildScrollView(
           child: Column(
             children: [
               Text(
                 'Create your account right now',
                 style: TextStyle(color: Colors.black, fontSize: 20),
+              ),
+              SizedBox(
+                height: 5.h,
               ),
               GestureDetector(
                 onTap: () {
@@ -181,44 +189,79 @@ class EbookRegisterState extends State<EbookRegister> {
               ),
               TextFiledMain(
                   hintText: 'Enter your name',
+                  textController: name,
                   iconFiled: Icons.account_circle_outlined),
               TextFiledMain(
                   hintText: 'Enter your email',
+                  textController: email,
                   iconFiled: Icons.email_outlined),
               TextFiledMain(
+                  textController: password,
                   hintText: 'Enter your password',
                   iconFiled: Icons.lock_outline),
-                  GestureDetector(
-                    onTap: (){},
-                    child: Container(
-                        margin: EdgeInsets.only(right: 20, left: 20, top: 17, bottom: 5),
-                        padding: EdgeInsets.symmetric(vertical: 1.2.h, horizontal: 1.5.h),
-                        decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          
+              GestureDetector(
+                onTap: () {
+                  register(
+                      name: name,
+                      email: email,
+                      password: password,
+                      context: context,
+                      widget: widget);
+                },
+                child: Container(
+                  margin:
+                      EdgeInsets.only(right: 20, left: 20, top: 17, bottom: 5),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 1.2.h, horizontal: 1.5.h),
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  width: MediaQuery.of(context).size.width,
+                  child: !visibleLoading
+                      ? Container(
+                          width: MediaQuery.of(context).size.width,
+                          child: Text(
+                            'Create account',
+                            style: TextStyle(color: Colors.white),
+                            textAlign: TextAlign.center,
+                          ),
+                        )
+                      : Visibility(
+                          visible: visibleLoading,
+                          child: Container(
+                              width: MediaQuery.of(context).size.width,
+                              child: Center(
+                                child: Container(
+                                  width: 20,
+                                  height: 20,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 1.5,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              )),
                         ),
-                        width: MediaQuery.of(context).size.width,
-                        child: !visibleLoading?Container(
-                           width: MediaQuery.of(context).size.width,
-                           child: Text('Create account', style: TextStyle(
-                             color: Colors.white
-                           ),textAlign: TextAlign.center,),
-
-                        ):Visibility(visible: visibleLoading, child: Container(
-                           width: MediaQuery.of(context).size.width,
-                           child: Center(
-                             child: Container(
-                               width: 20,
-                               height: 20,
-                               child: CircularProgressIndicator(
-                                 strokeWidth: 1.5, color: Colors.white,
-                               ),
-                             ),
-                           )
-                        ), ),
-                    ),
-                  )
+                ),
+              ),
+             Align(
+               alignment: Alignment.center,
+               child: Container(
+                 margin: EdgeInsets.only(right: 20, left:20, bottom: 5, top: 1.5.h),
+                 child: Row(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   children: [
+                     Text('Have an account?',style: TextStyle(color: Colors.black, fontSize: 17),),
+                     SizedBox(width: 10),
+                     GestureDetector(
+                       onTap: (){},
+                       child: Text('Login', style: TextStyle(color: Colors.black, fontSize: 17),
+                       ),
+                     ),
+                   ],
+                 ),
+               ),
+             )
             ],
           ),
         ),

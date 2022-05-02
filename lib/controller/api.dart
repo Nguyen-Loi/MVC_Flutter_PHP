@@ -10,7 +10,7 @@ class ApiConstant {
 
   String baseUrl() {
     String baseUrlWeb = 'http://127.0.0.1/ebookapp/';
-    String baseUrlMobile = 'http://192.168.88.101/ebookapp/';
+    String baseUrlMobile = 'http://192.168.1.188/ebookapp/';
     bool kisweb = false;
     try {
       if (Platform.isAndroid) {
