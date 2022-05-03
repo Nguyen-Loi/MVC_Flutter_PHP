@@ -5,13 +5,14 @@ class TextFiledMain extends StatelessWidget {
   final String hintText;
   final IconData iconFiled;
   final TextEditingController textController;
+  final bool typePassword;
   const TextFiledMain({
     Key? key,
     required this.hintText,
     required this.iconFiled,
     required this.textController,
+    this.typePassword=false
   }) : super(key: key);
-  
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class TextFiledMain extends StatelessWidget {
       child: TextField(
         style: TextStyle(color: Colors.black),
         controller: textController,
+        obscureText: typePassword,
         decoration: InputDecoration(
           hintText: hintText,
           prefixIcon: Icon(

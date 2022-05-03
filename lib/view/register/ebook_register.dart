@@ -6,6 +6,7 @@ import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class EbookRegister extends StatefulWidget {
   EbookRegister({Key? key}) : super(key: key);
@@ -198,15 +199,23 @@ class EbookRegisterState extends State<EbookRegister> {
               TextFiledMain(
                   textController: password,
                   hintText: 'Enter your password',
+                  typePassword: true,
                   iconFiled: Icons.lock_outline),
               GestureDetector(
                 onTap: () {
-                  register(
-                      name: name,
-                      email: email,
-                      password: password,
-                      context: context,
-                      widget: widget);
+                  if (_file.path == "" ||
+                      name.text == "" ||
+                      email.text == "" ||
+                      password.text == "") {
+                    msgError("Warning", "You can't fileds empty");
+                  } else {
+                    register(
+                        name: name,
+                        email: email,
+                        password: password,
+                        context: context,
+                        widget: widget);
+                  }
                 },
                 child: Container(
                   margin:
@@ -244,28 +253,68 @@ class EbookRegisterState extends State<EbookRegister> {
                         ),
                 ),
               ),
-             Align(
-               alignment: Alignment.center,
-               child: Container(
-                 margin: EdgeInsets.only(right: 20, left:20, bottom: 5, top: 1.5.h),
-                 child: Row(
-                   mainAxisAlignment: MainAxisAlignment.center,
-                   children: [
-                     Text('Have an account?',style: TextStyle(color: Colors.black, fontSize: 17),),
-                     SizedBox(width: 10),
-                     GestureDetector(
-                       onTap: (){},
-                       child: Text('Login', style: TextStyle(color: Colors.black, fontSize: 17),
-                       ),
-                     ),
-                   ],
-                 ),
-               ),
-             )
+              Align(
+                alignment: Alignment.center,
+                child: Container(
+                  margin: EdgeInsets.only(
+                      right: 20, left: 20, bottom: 5, top: 1.5.h),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Have an account?',
+                        style: TextStyle(color: Colors.black, fontSize: 17),
+                      ),
+                      SizedBox(width: 10),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Text(
+                          'Login',
+                          style: TextStyle(color: Colors.black, fontSize: 17),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),
       ),
     );
+  }
+
+  Future msgError(String title, String description) {
+    return Alert(
+        context: context,
+        type: AlertType.warning,
+        onWillPopActive: true,
+        title: title,
+        desc: description,
+        style: AlertStyle(
+          animationType: AnimationType.fromBottom,
+          backgroundColor: Colors.white,
+          titleStyle: TextStyle(color: Colors.black),
+          descStyle: TextStyle(color: Colors.black54), // Textstyle
+        ),
+        buttons: [
+          DialogButton(
+            padding: EdgeInsets.all(1),
+            child: Container(
+              height: 45,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: Colors.blue)),
+                  child: Text('OK', style: TextStyle(
+                    color: Colors.white, fontSize: 17
+                  ),),
+            ),
+            onPressed: () {
+              Navigator.of(context).pop(true);
+            },
+            
+          ),
+        ]).show();
   }
 }
