@@ -267,7 +267,12 @@ class EbookRegisterState extends State<EbookRegister> {
                       ),
                       SizedBox(width: 10),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(builder: (_) => EbookLogin()),
+                              (route) => false);
+                        },
                         child: Text(
                           'Login',
                           style: TextStyle(color: Colors.black, fontSize: 17),
@@ -306,14 +311,14 @@ class EbookRegisterState extends State<EbookRegister> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: Colors.blue)),
-                  child: Text('OK', style: TextStyle(
-                    color: Colors.white, fontSize: 17
-                  ),),
+              child: Text(
+                'OK',
+                style: TextStyle(color: Colors.white, fontSize: 17),
+              ),
             ),
             onPressed: () {
               Navigator.of(context).pop(true);
             },
-            
           ),
         ]).show();
   }
