@@ -8,6 +8,7 @@ class ApiConstant {
   String coming = 'coming';
   String register = 'utils/register.php';
   String login = 'utils/login.php';
+  String viewPhoto = 'utils/viewphoto.php';
 
   String baseUrl() {
     String baseUrlWeb = 'http://127.0.0.1/ebookapp/';
