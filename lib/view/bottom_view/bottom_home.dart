@@ -47,7 +47,7 @@ class _HomeState extends State<Home> {
         id = value[0];
         name = value[1];
         email = value[2];
-        photo = value[3];
+        // photo = value[3];
         getPhoto(id);
       });
     });
@@ -81,11 +81,11 @@ class _HomeState extends State<Home> {
             Container(
               child: photo == '' ? ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(100)),
-              child: Image.asset('asset/images/register.png', fit: BoxFit.cover, width: 14.w, height: 7)
+              child: Image.asset('asset/images/register.png', fit: BoxFit.cover, width: 14.w, height: 7.h)
               
               ):ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(100)),
-              child: Image.network(Functions.fixImage(photo),  fit: BoxFit.cover, width: 14.w, height: 7)
+              child: Image.network(Functions.fixImage(photo),  fit: BoxFit.cover, width: 14.w, height: 7.h)
               
               ),
             ),
