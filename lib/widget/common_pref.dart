@@ -19,3 +19,8 @@ Future loadLogin() async {
   SharedPreferences preferences = await SharedPreferences.getInstance();
   return preferences.getStringList('login');
 }
+
+saveFavoriteEbook(String favoriteId)async{
+ SharedPreferences preferences = await SharedPreferences.getInstance();
+  return preferences.setString('saveFavorite', favoriteId);
+}

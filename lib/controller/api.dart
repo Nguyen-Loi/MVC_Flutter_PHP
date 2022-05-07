@@ -10,6 +10,8 @@ class ApiConstant {
   String login = 'utils/login.php';
   String viewPhoto = 'utils/viewphoto.php';
   String detail = 'pdf_by_id=';
+  String saveFavorite = 'utils/save_favorite.php';
+  String checkFavorite = 'utils/checkfav.php';
 
   String baseUrl() {
     String baseUrlWeb = 'http://127.0.0.1/ebookapp/';

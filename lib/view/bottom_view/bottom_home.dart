@@ -81,15 +81,15 @@ class _HomeState extends State<Home> {
         title: Row(
           children: [
             Container(
-              child: photo == '' ? ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(100)),
-              child: Image.asset('asset/images/register.png', fit: BoxFit.cover, width: 14.w, height: 7.h)
-              
-              ):ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(100)),
-              child: Image.network(Functions.fixImage(photo),  fit: BoxFit.cover, width: 14.w, height: 7.h)
-              
-              ),
+              child: photo == ''
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(100)),
+                      child: Image.asset('asset/images/register.png',
+                          fit: BoxFit.cover, width: 14.w, height: 7.h))
+                  : ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(100)),
+                      child: Image.network(Functions.fixImage(photo),
+                          fit: BoxFit.cover, width: 14.w, height: 7.h)),
             ),
             SizedBox(
               width: 2.w,
@@ -126,10 +126,14 @@ class _HomeState extends State<Home> {
                                       itemBuilder:
                                           (BuildContext context, int index) {
                                         return GestureDetector(
-                                          onTap: () => pushPage(context, EbookDetail(
-                                            ebookId: snapshot.data![index].id,
-                                            status: snapshot.data![index].statusNews,
-                                          )),
+                                          onTap: () => pushPage(
+                                              context,
+                                              EbookDetail(
+                                                ebookId:
+                                                    snapshot.data![index].id,
+                                                status: snapshot
+                                                    .data![index].statusNews,
+                                              )),
                                           child: Padding(
                                             padding: const EdgeInsets.all(10),
                                             child: Container(
