@@ -7,10 +7,11 @@ class ApiConstant {
   String category = 'category';
   String coming = 'coming';
   String register = 'utils/register.php';
+  String login = 'utils/login.php';
 
   String baseUrl() {
     String baseUrlWeb = 'http://127.0.0.1/ebookapp/';
-    String baseUrlMobile = 'http://192.168.1.188/ebookapp/';
+    String baseUrlMobile = 'http://192.168.88.101/ebookapp/';
     bool kisweb = false;
     try {
       if (Platform.isAndroid) {
