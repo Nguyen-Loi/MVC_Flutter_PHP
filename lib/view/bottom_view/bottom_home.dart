@@ -7,7 +7,9 @@ import 'package:ebook_app/controller/con_latest.dart';
 import 'package:ebook_app/controller/con_slider.dart';
 import 'package:ebook_app/model/category/model_category.dart';
 import 'package:ebook_app/model/ebook/model_ebook.dart';
+import 'package:ebook_app/view/detail/ebook_detail.dart';
 import 'package:ebook_app/widget/common_pref.dart';
+import 'package:ebook_app/widget/ebook_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:ebook_app/model/functions.dart';
@@ -124,7 +126,10 @@ class _HomeState extends State<Home> {
                                       itemBuilder:
                                           (BuildContext context, int index) {
                                         return GestureDetector(
-                                          onTap: () {},
+                                          onTap: () => pushPage(context, EbookDetail(
+                                            ebookId: snapshot.data![index].id,
+                                            status: snapshot.data![index].statusNews,
+                                          )),
                                           child: Padding(
                                             padding: const EdgeInsets.all(10),
                                             child: Container(
