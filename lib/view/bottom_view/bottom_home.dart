@@ -229,7 +229,16 @@ class _HomeState extends State<Home> {
                                       itemBuilder: (context, index) {
                                         if (index == snapshot.data!.length) {
                                           return GestureDetector(
-                                            onTap: () {},
+                                            onTap: () {
+                                              pushPage(
+                                                  context,
+                                                  EbookDetail(
+                                                      ebookId: snapshot
+                                                          .data![index].id,
+                                                      status: snapshot
+                                                          .data![index]
+                                                          .statusNews));
+                                            },
                                             child: Container(
                                                 width: 24.w,
                                                 padding:
@@ -244,7 +253,16 @@ class _HomeState extends State<Home> {
                                           );
                                         }
                                         return GestureDetector(
-                                          onTap: () {},
+                                          onTap: () {
+                                            pushPage(
+                                                context,
+                                                EbookDetail(
+                                                    ebookId: snapshot
+                                                        .data![index].id,
+                                                    status: snapshot
+                                                        .data![index]
+                                                        .statusNews));
+                                          },
                                           child: Container(
                                             padding: const EdgeInsets.all(6),
                                             child: Column(
@@ -335,7 +353,19 @@ class _HomeState extends State<Home> {
                                                     itemBuilder:
                                                         (context, index) {
                                                       return GestureDetector(
-                                                        onTap: () {},
+                                                        onTap: () {
+                                                          pushPage(
+                                                              context,
+                                                              EbookDetail(
+                                                                  ebookId: snapshot
+                                                                      .data![
+                                                                          index]
+                                                                      .id,
+                                                                  status: snapshot
+                                                                      .data![
+                                                                          index]
+                                                                      .statusNews));
+                                                        },
                                                         child: Container(
                                                           padding:
                                                               const EdgeInsets
@@ -422,7 +452,9 @@ class _HomeState extends State<Home> {
                                         scrollDirection: Axis.horizontal,
                                         itemBuilder: (context, index) {
                                           return GestureDetector(
-                                            onTap: () {},
+                                            onTap: () {
+                                              
+                                            },
                                             child: Container(
                                               padding:
                                                   const EdgeInsets.all(5.0),

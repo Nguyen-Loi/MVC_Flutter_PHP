@@ -1,6 +1,8 @@
 import 'package:ebook_app/controller/con_latest.dart';
 import 'package:ebook_app/model/ebook/model_ebook.dart';
 import 'package:ebook_app/model/functions.dart';
+import 'package:ebook_app/view/detail/ebook_detail.dart';
+import 'package:ebook_app/widget/ebook_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -46,7 +48,14 @@ class _BotttomLibraryState extends State<BotttomLibrary> {
                             crossAxisCount: 3, childAspectRatio: 5.5 / 9.0),
                         itemBuilder: (context, index) {
                           return GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                pushPage(
+                                    context,
+                                    EbookDetail(
+                                        ebookId: snapshot.data![index].id,
+                                        status:
+                                            snapshot.data![index].statusNews));
+                              },
                               child: Container(
                                 padding: EdgeInsets.all(5),
                                 child: Column(
@@ -64,10 +73,14 @@ class _BotttomLibraryState extends State<BotttomLibrary> {
                                     SizedBox(height: 0.7),
                                     Container(
                                       width: 24.w,
-                                      child: Text(snapshot.data![index].title, style: TextStyle(
-                                        color: Colors.black,
-                                        
-                                      ),maxLines: 2,overflow: TextOverflow.ellipsis,),
+                                      child: Text(
+                                        snapshot.data![index].title,
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                        ),
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                                     )
                                   ],
                                 ),
