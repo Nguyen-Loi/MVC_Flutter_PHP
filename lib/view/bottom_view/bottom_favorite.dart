@@ -1,4 +1,5 @@
 import 'package:ebook_app/controller/con_favorite.dart';
+import 'package:ebook_app/controller/con_latest.dart';
 import 'package:ebook_app/model/ebook/model_ebook.dart';
 import 'package:ebook_app/model/functions.dart';
 import 'package:ebook_app/view/detail/ebook_detail.dart';
@@ -13,14 +14,15 @@ class BotttomFavorite extends StatefulWidget {
 }
 
 class _BotttomFavoriteState extends State<BotttomFavorite> {
-  Future<List<ModelEbook>>? getFavorite;
-  late List<ModelEbook> listFavorite;
+ Future<List<ModelEbook>>? getFavorite;
+  List<ModelEbook> listFavorite = [];
 
-  String id = '', name = '', email = '', photo = '';
+  String id = '', name = '', email = '';
 
   @override
   void initState() {
     super.initState();
+      
     loadLogin().then((value) {
       setState(() {
         id = value[0];

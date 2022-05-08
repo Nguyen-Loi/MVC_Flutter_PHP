@@ -2,12 +2,12 @@ import 'package:dio/dio.dart';
 import 'package:ebook_app/controller/api.dart';
 import 'package:ebook_app/model/ebook/model_ebook.dart';
 
-Future<List<ModelEbook>> fetchFavorite(List<ModelEbook> fetch, String id) async {
+Future<List<ModelEbook>> fetchFavorite(List<ModelEbook> fetchFavorite, String id) async {
   var request = await Dio()
       .get(ApiConstant().baseUrl() + ApiConstant().api + ApiConstant().favorite + id);
 
   for (Map<String, dynamic> ebook in request.data) {
-    fetch.add(ModelEbook(
+    fetchFavorite.add(ModelEbook(
         id: ebook['id'],
         title: ebook['title'],
         photo: ebook['photo'],
@@ -23,5 +23,5 @@ Future<List<ModelEbook>> fetchFavorite(List<ModelEbook> fetch, String id) async 
         rating: ebook['rating'],
         free: ebook['free']));
   }
-  return fetch;
+  return fetchFavorite;
 }
