@@ -24,3 +24,4 @@ saveFavoriteEbook(String favoriteId)async{
  SharedPreferences preferences = await SharedPreferences.getInstance();
   return preferences.setString('saveFavorite', favoriteId);
 }
+

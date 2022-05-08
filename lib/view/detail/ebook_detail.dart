@@ -6,10 +6,11 @@ import 'package:ebook_app/widget/common_pref.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:ebook_app/model/functions.dart';
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sizer/sizer.dart';
 import 'package:future_progress_dialog/future_progress_dialog.dart';
-
+import 'package:package_info/package_info.dart';
 import 'package:ebook_app/model/ebook/model_ebook.dart';
 
 class EbookDetail extends StatefulWidget {
@@ -54,6 +55,12 @@ class _EbookDetailState extends State<EbookDetail> {
     setState(() {
       checkFavorite = reponse;
     });
+  }
+
+  _share() async {
+    PackageInfo pi = await PackageInfo.fromPlatform();
+    Share.share(
+        'Reading ebook for free on ${pi.appName} \n Dowload now: https://play.google.com/store/apps/details?id=${pi.packageName}');
   }
 
   @override
@@ -215,7 +222,9 @@ class _EbookDetailState extends State<EbookDetail> {
                                                           .ellipsis),
                                               Spacer(),
                                               GestureDetector(
-                                                onTap: () {},
+                                                onTap: () {
+                                                  _share();
+                                                },
                                                 child: Icon(Icons.share,
                                                     color: Colors.black),
                                               ),
