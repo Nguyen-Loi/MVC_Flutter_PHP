@@ -15,6 +15,7 @@ class ApiConstant {
   String checkFavorite = 'utils/checkfav.php';
   String favorite = 'favorite=';
   String updatePhoto = 'utils/updatephoto.php';
+  String ads = 'ads';
 
   String baseUrl() {
     String baseUrlWeb = 'http://127.0.0.1/ebookapp/';

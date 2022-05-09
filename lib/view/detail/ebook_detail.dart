@@ -1,3 +1,4 @@
+
 import 'package:dio/dio.dart';
 import 'package:ebook_app/controller/api.dart';
 import 'package:ebook_app/controller/con_detail.dart';
@@ -12,6 +13,7 @@ import 'package:sizer/sizer.dart';
 import 'package:future_progress_dialog/future_progress_dialog.dart';
 import 'package:package_info/package_info.dart';
 import 'package:ebook_app/model/ebook/model_ebook.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class EbookDetail extends StatefulWidget {
   int ebookId;
@@ -259,7 +261,16 @@ class _EbookDetailState extends State<EbookDetail> {
                                     )
                                   : listDetail[index].free == 1
                                       ? GestureDetector(
-                                          onTap: () {},
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) => SfPdfViewer.network(
+        'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
+        
+      ),
+                                                ));
+                                          },
                                           child: Container(
                                             decoration: BoxDecoration(
                                                 borderRadius: BorderRadius.all(
