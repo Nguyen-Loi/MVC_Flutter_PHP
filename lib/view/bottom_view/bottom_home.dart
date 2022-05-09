@@ -7,12 +7,13 @@ import 'package:ebook_app/controller/con_latest.dart';
 import 'package:ebook_app/controller/con_slider.dart';
 import 'package:ebook_app/model/category/model_category.dart';
 import 'package:ebook_app/model/ebook/model_ebook.dart';
+import 'package:ebook_app/view/category/ebook_category.dart';
 import 'package:ebook_app/view/detail/ebook_detail.dart';
 import 'package:ebook_app/widget/common_pref.dart';
 import 'package:ebook_app/widget/ebook_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:ebook_app/model/functions.dart';
+import 'package:ebook_app/model/function/functions.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -453,7 +454,11 @@ class _HomeState extends State<Home> {
                                         itemBuilder: (context, index) {
                                           return GestureDetector(
                                             onTap: () {
-                                              
+                                              pushPage(
+                                                  context,
+                                                  EbookCategory(
+                                                      catId: snapshot
+                                                          .data![index].catId));
                                             },
                                             child: Container(
                                               padding:

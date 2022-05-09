@@ -4,7 +4,7 @@ import 'package:ebook_app/controller/con_detail.dart';
 import 'package:ebook_app/controller/con_save_favorite.dart';
 import 'package:ebook_app/widget/common_pref.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:ebook_app/model/functions.dart';
+import 'package:ebook_app/model/function/functions.dart';
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
 import 'package:shared_preferences/shared_preferences.dart';

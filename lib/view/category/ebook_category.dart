@@ -1,4 +1,5 @@
 import 'package:ebook_app/controller/con_latest.dart';
+import 'package:ebook_app/controller/con_pdf_by_cat.dart';
 import 'package:ebook_app/model/ebook/model_ebook.dart';
 import 'package:ebook_app/model/function/functions.dart';
 import 'package:ebook_app/view/detail/ebook_detail.dart';
@@ -6,21 +7,22 @@ import 'package:ebook_app/widget/ebook_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-class BotttomLibrary extends StatefulWidget {
-  BotttomLibrary({Key? key}) : super(key: key);
+class EbookCategory extends StatefulWidget {
+  int catId;
+  EbookCategory({required this.catId});
 
   @override
-  State<BotttomLibrary> createState() => _BotttomLibraryState();
+  State<EbookCategory> createState() => _BotttomLibraryState();
 }
 
-class _BotttomLibraryState extends State<BotttomLibrary> {
-  late Future<List<ModelEbook>> getLatest;
-  List<ModelEbook> listLatest = [];
+class _BotttomLibraryState extends State<EbookCategory> {
+  late Future<List<ModelEbook>> getCategory;
+  List<ModelEbook> listBookOfCategory = [];
 
   @override
   void initState() {
     super.initState();
-    getLatest = fetchLatest(listLatest);
+    getCategory = fetchByCategory(listBookOfCategory, widget.catId);
   }
 
   @override
@@ -30,14 +32,23 @@ class _BotttomLibraryState extends State<BotttomLibrary> {
         backgroundColor: Colors.white70,
         elevation: 0,
         title: Text(
-          'Library',
+          'Category',
           style: TextStyle(color: Colors.black),
+        ),
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
         ),
       ),
       body: Container(
         child: SingleChildScrollView(
             child: FutureBuilder<List<ModelEbook>>(
-                future: getLatest,
+                future: getCategory,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
                     return GridView.builder(

@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:ebook_app/controller/api.dart';
 import 'package:ebook_app/view/login/ebook_login.dart';
-import 'package:ebook_app/view/textfield_main.dart';
+import 'package:ebook_app/view/component/textfield_main.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -18,7 +18,9 @@ class EbookRegister extends StatefulWidget {
 class EbookRegisterState extends State<EbookRegister> {
   File _file = File('');
   final imgPicker = ImagePicker();
+
   bool visibleLoading = false;
+  
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();

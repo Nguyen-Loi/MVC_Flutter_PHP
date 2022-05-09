@@ -35,6 +35,7 @@ dependencies:
     sdk: flutter
   flutter_html: ^2.2.1
   future_progress_dialog: ^0.2.0
+  google_mobile_ads: ^1.2.0
   http: ^0.13.4
   image_picker: ^0.8.5
   json_annotation: ^4.4.0
@@ -44,6 +45,7 @@ dependencies:
   share: ^2.0.4
   shared_preferences: ^2.0.13
   sizer: ^2.0.15
+  unity_ads_plugin: ^0.3.3
 
 dev_dependencies:
   flutter_lints: ^1.0.0

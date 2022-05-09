@@ -2,9 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:ebook_app/controller/api.dart';
 import 'package:ebook_app/model/ebook/model_ebook.dart';
 
-Future<List<ModelEbook>> fetchFavorite(List<ModelEbook> fetch, String id) async {
+Future<List<ModelEbook>> fetchByCategory(List<ModelEbook> fetch, int id) async {
   var request = await Dio()
-      .get(ApiConstant().baseUrl() + ApiConstant().api + ApiConstant().favorite + id);
+      .get(ApiConstant().baseUrl() + ApiConstant().api + ApiConstant().pdfByCat+ id.toString());
 
   for (Map<String, dynamic> ebook in request.data) {
     fetch.add(ModelEbook(

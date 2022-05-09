@@ -1,7 +1,7 @@
 import 'package:ebook_app/controller/con_favorite.dart';
 import 'package:ebook_app/controller/con_latest.dart';
 import 'package:ebook_app/model/ebook/model_ebook.dart';
-import 'package:ebook_app/model/functions.dart';
+import 'package:ebook_app/model/function/functions.dart';
 import 'package:ebook_app/view/detail/ebook_detail.dart';
 import 'package:ebook_app/widget/common_pref.dart';
 import 'package:ebook_app/widget/ebook_routes.dart';

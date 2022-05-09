@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:ebook_app/controller/api.dart';
 import 'package:ebook_app/view/bottom_view/bottom_view.dart';
 import 'package:ebook_app/view/register/ebook_register.dart';
-import 'package:ebook_app/view/textfield_main.dart';
+import 'package:ebook_app/view/component/textfield_main.dart';
 import 'package:ebook_app/widget/common_pref.dart';
 import 'package:ebook_app/widget/ebook_routes.dart';
 import 'package:flutter/material.dart';

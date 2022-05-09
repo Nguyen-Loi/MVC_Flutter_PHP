@@ -20,6 +20,11 @@ Future loadLogin() async {
   return preferences.getStringList('login');
 }
 
+Future removeLogin() async {
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  return preferences.remove('login');
+}
+
 saveFavoriteEbook(String favoriteId)async{
  SharedPreferences preferences = await SharedPreferences.getInstance();
   return preferences.setString('saveFavorite', favoriteId);

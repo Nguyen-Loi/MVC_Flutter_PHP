@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:ebook_app/controller/api.dart';
-import 'package:ebook_app/view/alert_main.dart';
+import 'package:ebook_app/view/component/alert_main.dart';
 import 'package:ebook_app/widget/common_pref.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
