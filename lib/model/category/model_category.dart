@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-
 part 'model_category.g.dart';
+
 @JsonSerializable()
 class ModelCategory {
   int catId;

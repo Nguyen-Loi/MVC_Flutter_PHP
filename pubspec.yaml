@@ -45,6 +45,7 @@ dependencies:
   share: ^2.0.4
   shared_preferences: ^2.0.13
   sizer: ^2.0.15
+  startapp_sdk_flutter: ^0.0.8
   unity_ads_plugin: ^0.3.3
 
 dev_dependencies:
