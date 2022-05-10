@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:ebook_app/controller/api.dart';
 import 'package:ebook_app/controller/con_detail.dart';
@@ -262,13 +261,15 @@ class _EbookDetailState extends State<EbookDetail> {
                                   : listDetail[index].free == 1
                                       ? GestureDetector(
                                           onTap: () {
+                                            print(
+                                                '${snaphot.data![index].pdf}');
                                             Navigator.push(
                                                 context,
                                                 MaterialPageRoute(
-                                                  builder: (context) => SfPdfViewer.network(
-        'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
-        
-      ),
+                                                  builder: (context) =>
+                                                      SfPdfViewer.network(
+                                                    '${Functions.fixImage(snaphot.data![index].pdf)}',
+                                                  ),
                                                 ));
                                           },
                                           child: Container(
@@ -292,7 +293,16 @@ class _EbookDetailState extends State<EbookDetail> {
                                           ),
                                         )
                                       : GestureDetector(
-                                          onTap: () {},
+                                          onTap: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      SfPdfViewer.network(
+                                                    '${Functions.fixImage(snaphot.data![index].pdf)}',
+                                                  ),
+                                                ));
+                                          },
                                           child: Container(
                                             decoration: BoxDecoration(
                                                 borderRadius: BorderRadius.all(
